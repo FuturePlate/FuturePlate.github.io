@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>FuturePlate — School-Based Nutrition Awareness in Sri Lanka</title>
+<meta name="description" content="FuturePlate is a school-based nutrition awareness initiative in the Anuradhapura District of Sri Lanka, helping adolescents build lifelong healthy eating habits through education, engagement and empowerment." />
+
+<!-- ============ FONTS ============ -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+<!-- ============ TAILWIND ============ -->
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          leaf:  { DEFAULT: '#1B5E3F', deep: '#0E3A26', bright: '#2E9E5B' },
+          mango: { DEFAULT: '#E68A38', soft: '#F6B26B' },
+          honey: '#F3F6EC',
+          cream: '#FCFBF6',
+          ink:   '#16231D',
+        },
+        fontFamily: {
+          display: ['Fraunces', 'serif'],
+          sans: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
+        },
+        fontWeight: { 400: '400', 500: '500', 600: '600', 700: '700', 800: '800' },
+        boxShadow: {
+          plate: '0 30px 60px -25px rgba(14,58,38,0.45)',
+          soft: '0 18px 40px -24px rgba(14,58,38,0.35)',
+        },
+      },
+    },
+  };
+</script>
+
+<style>
+  html { scroll-behavior: smooth; scroll-padding-top: 84px; }
+  body { -webkit-font-smoothing: antialiased; }
+
+  /* Eyebrow / label utility */
+  .eyebrow {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.22em;
+    font-weight: 700;
+    font-size: 0.72rem;
+  }
+
+  /* Subtle dotted "field" texture for atmosphere */
+  .field-dots {
+    background-image: radial-gradient(rgba(27,94,63,0.10) 1.2px, transparent 1.2px);
+    background-size: 22px 22px;
+  }
+
+  /* The signature plate frame */
+  .plate-rim {
+    border-radius: 9999px;
+    background:
+      radial-gradient(circle at 50% 50%, #ffffff 0 60%, #f0efe6 78%, #e7e6da 100%);
+    box-shadow:
+      inset 0 0 0 1px rgba(14,58,38,0.06),
+      inset 0 0 0 14px #ffffff,
+      inset 0 0 0 15px rgba(14,58,38,0.10);
+  }
+
+  /* Image placeholder styling */
+  .ph {
+    background:
+      linear-gradient(135deg, rgba(46,158,91,0.08), rgba(230,138,56,0.08)),
+      #f7f8f1;
+  }
+
+  /* Scroll reveal */
+  .reveal { opacity: 0; transform: translateY(22px); transition: opacity .7s ease, transform .7s ease; }
+  .reveal.in { opacity: 1; transform: none; }
+  .reveal.d1 { transition-delay: .08s; }
+  .reveal.d2 { transition-delay: .16s; }
+  .reveal.d3 { transition-delay: .24s; }
+
+  /* Active nav link */
+  .nav-link.active { color: #1B5E3F; }
+  .nav-link.active::after { width: 100%; }
+  .nav-link { position: relative; }
+  .nav-link::after {
+    content: ''; position: absolute; left: 0; bottom: -4px; height: 2px; width: 0;
+    background: #E68A38; transition: width .25s ease;
+  }
+  .nav-link:hover::after { width: 100%; }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
+  }
+</style>
+<noscript><style>.reveal{opacity:1 !important;transform:none !important;}</style></noscript>
+</head>
+
+<body class="bg-cream text-ink font-sans antialiased selection:bg-mango/30">
+
+<!-- ================= NAV ================= -->
+<header id="top" class="fixed top-0 inset-x-0 z-50 transition-all duration-300" data-nav>
+  <nav class="mx-auto max-w-7xl px-5 sm:px-8">
+    <div class="mt-3 flex items-center justify-between rounded-full border border-leaf/10 bg-cream/85 px-4 py-2.5 backdrop-blur-md shadow-soft">
+      <!-- Brand -->
+      <a href="#top" class="flex items-center gap-2.5 group">
+        <span class="grid h-9 w-9 place-items-center rounded-full bg-leaf text-cream shadow-soft">
+          <!-- plate + sprout logomark -->
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.6"/>
+            <path d="M12 15c0-2.2-1.6-3.8-3.8-3.8C8.2 13.4 9.8 15 12 15Zm0 0c0-2.6 1.8-4.4 4.4-4.4C16.4 13.2 14.6 15 12 15Zm0 0v2.6" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </span>
+        <span class="font-display text-xl font-600 tracking-tight text-leaf-deep">FuturePlate</span>
+      </a>
+
+      <!-- Desktop links -->
+      <div class="hidden items-center gap-7 lg:flex">
+        <a href="#about"     class="nav-link text-sm font-600 text-ink/70 transition-colors hover:text-leaf">The need</a>
+        <a href="#program"   class="nav-link text-sm font-600 text-ink/70 transition-colors hover:text-leaf">Program</a>
+        <a href="#approach"  class="nav-link text-sm font-600 text-ink/70 transition-colors hover:text-leaf">How it works</a>
+        <a href="#impact"    class="nav-link text-sm font-600 text-ink/70 transition-colors hover:text-leaf">Impact</a>
+        <a href="#founder"   class="nav-link text-sm font-600 text-ink/70 transition-colors hover:text-leaf">Founder</a>
+        <a href="#contact" class="rounded-full bg-leaf px-5 py-2.5 text-sm font-700 text-cream shadow-soft transition-transform hover:-translate-y-0.5 hover:bg-leaf-deep">Get in touch</a>
+      </div>
+
+      <!-- Mobile toggle -->
+      <button id="menuBtn" class="lg:hidden grid h-10 w-10 place-items-center rounded-full text-leaf-deep hover:bg-leaf/10" aria-label="Open menu" aria-expanded="false">
+        <svg id="menuIcon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </div>
+
+    <!-- Mobile menu -->
+    <div id="mobileMenu" class="lg:hidden hidden mt-2 overflow-hidden rounded-3xl border border-leaf/10 bg-cream/95 backdrop-blur-md shadow-soft">
+      <div class="flex flex-col p-2">
+        <a href="#about"    class="m-link rounded-2xl px-4 py-3 text-sm font-600 text-ink/80 hover:bg-leaf/10">The need</a>
+        <a href="#program"  class="m-link rounded-2xl px-4 py-3 text-sm font-600 text-ink/80 hover:bg-leaf/10">Program</a>
+        <a href="#approach" class="m-link rounded-2xl px-4 py-3 text-sm font-600 text-ink/80 hover:bg-leaf/10">How it works</a>
+        <a href="#impact"   class="m-link rounded-2xl px-4 py-3 text-sm font-600 text-ink/80 hover:bg-leaf/10">Impact</a>
+        <a href="#founder"  class="m-link rounded-2xl px-4 py-3 text-sm font-600 text-ink/80 hover:bg-leaf/10">Founder</a>
+        <a href="#contact"  class="m-link m-2 rounded-2xl bg-leaf px-4 py-3 text-center text-sm font-700 text-cream">Get in touch</a>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<!-- ================= HERO ================= -->
+<section class="relative overflow-hidden bg-honey pt-32 pb-20 sm:pt-36 lg:pt-40 lg:pb-28">
+  <div class="absolute inset-0 field-dots opacity-70"></div>
+  <div class="pointer-events-none absolute -top-24 -right-24 h-72 w-72 rounded-full bg-mango/10 blur-3xl"></div>
+  <div class="pointer-events-none absolute -bottom-32 -left-24 h-80 w-80 rounded-full bg-leaf-bright/10 blur-3xl"></div>
+
+  <div class="relative mx-auto grid max-w-7xl items-center gap-14 px-5 sm:px-8 lg:grid-cols-[1.05fr_0.95fr]">
+    <!-- Copy -->
+    <div class="reveal">
+      <span class="eyebrow inline-flex items-center gap-2 rounded-full bg-leaf/10 px-3.5 py-1.5 text-leaf-deep">
+        <span class="h-1.5 w-1.5 rounded-full bg-mango"></span> Anuradhapura District · Sri Lanka
+      </span>
+
+      <h1 class="mt-6 font-display text-[2.6rem] leading-[1.04] tracking-tight text-leaf-deep sm:text-6xl lg:text-[4.2rem]">
+        Healthy habits,<br><span class="italic text-mango">served early.</span>
+      </h1>
+
+      <p class="mt-6 max-w-xl text-lg leading-relaxed text-ink/75">
+        FuturePlate is a school-based nutrition awareness initiative helping adolescents in rural Sri Lanka eat more fruits and vegetables — and build habits that last a lifetime. We work through <span class="font-600 text-leaf">education, engagement and empowerment</span>.
+      </p>
+
+      <div class="mt-8 flex flex-wrap items-center gap-3">
+        <a href="#program" class="rounded-full bg-leaf px-6 py-3.5 text-sm font-700 text-cream shadow-plate transition-transform hover:-translate-y-0.5 hover:bg-leaf-deep">Explore the program</a>
+        <a href="#contact" class="rounded-full border border-leaf/25 bg-cream px-6 py-3.5 text-sm font-700 text-leaf-deep transition-colors hover:border-leaf hover:bg-leaf/5">Partner with us</a>
+      </div>
+
+      <!-- mini facts -->
+      <dl class="mt-10 grid max-w-md grid-cols-3 gap-5">
+        <div>
+          <dt class="font-display text-3xl font-600 text-leaf">5</dt>
+          <dd class="mt-1 text-xs font-600 leading-snug text-ink/60">Schools reached in phase one</dd>
+        </div>
+        <div>
+          <dt class="font-display text-3xl font-600 text-leaf">8–9</dt>
+          <dd class="mt-1 text-xs font-600 leading-snug text-ink/60">Grades we focus on</dd>
+        </div>
+        <div>
+          <dt class="font-display text-3xl font-600 text-leaf">3</dt>
+          <dd class="mt-1 text-xs font-600 leading-snug text-ink/60">Pillars: educate, engage, empower</dd>
+        </div>
+      </dl>
+    </div>
+
+    <!-- Plate visual -->
+    <div class="reveal d1 relative mx-auto w-full max-w-md">
+      <div class="plate-rim relative aspect-square w-full p-4 shadow-plate">
+        <!-- ===== IMAGE PLACEHOLDER: HERO ===== -->
+        <!-- Replace the inner <div class="ph ..."> with: <img src="images/hero.jpg" alt="FuturePlate workshop" class="h-full w-full rounded-full object-cover"> -->
+        <div class="ph grid h-full w-full place-items-center rounded-full text-center">
+          <div class="px-6">
+            <svg class="mx-auto mb-3 h-10 w-10 text-leaf/40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="11" r="2"/><path d="m21 17-5-5L5 21"/></svg>
+            <p class="text-sm font-700 text-leaf-deep">Hero image</p>
+            <p class="mt-1 text-xs text-ink/50">Add a workshop or produce photo here</p>
+          </div>
+        </div>
+      </div>
+      <!-- floating chips -->
+      <div class="absolute -left-3 top-10 rounded-2xl border border-leaf/10 bg-cream px-4 py-3 shadow-soft sm:-left-6">
+        <p class="text-xs font-700 text-leaf">🥬 More fruits & veg</p>
+      </div>
+      <div class="absolute -right-2 bottom-8 rounded-2xl border border-leaf/10 bg-cream px-4 py-3 shadow-soft sm:-right-5">
+        <p class="text-xs font-700 text-mango">Peer-led learning</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= MARQUEE / VALUES STRIP ================= -->
+<div class="border-y border-leaf/10 bg-leaf text-cream">
+  <div class="mx-auto flex max-w-7xl flex-wrap items-center justify-center gap-x-10 gap-y-3 px-5 py-5 text-center text-sm font-600 sm:px-8">
+    <span class="flex items-center gap-2"><span class="text-mango-soft">●</span> Government schools</span>
+    <span class="flex items-center gap-2"><span class="text-mango-soft">●</span> Student ambassadors</span>
+    <span class="flex items-center gap-2"><span class="text-mango-soft">●</span> Teacher training</span>
+    <span class="flex items-center gap-2"><span class="text-mango-soft">●</span> Parental engagement</span>
+    <span class="flex items-center gap-2"><span class="text-mango-soft">●</span> Evidence-based</span>
+  </div>
+</div>
+
+<!-- ================= THE NEED ================= -->
+<section id="about" class="relative bg-cream py-20 sm:py-28">
+  <div class="mx-auto max-w-7xl px-5 sm:px-8">
+    <div class="grid gap-14 lg:grid-cols-[0.85fr_1.15fr]">
+      <div class="reveal">
+        <span class="eyebrow text-mango">The need</span>
+        <h2 class="mt-4 font-display text-3xl leading-tight tracking-tight text-leaf-deep sm:text-4xl">
+          Most adult illness is written, in pencil, in childhood.
+        </h2>
+        <p class="mt-5 leading-relaxed text-ink/75">
+          Non-communicable diseases like diabetes, heart disease and obesity are rising worldwide — and poor dietary habits formed early in life are a key driver. Children today grow up in food environments that crowd out the nutrients they need most.
+        </p>
+      </div>
+
+      <div class="reveal d1 grid gap-5 sm:grid-cols-2">
+        <article class="rounded-3xl border border-leaf/10 bg-honey p-6 shadow-soft">
+          <h3 class="font-display text-lg font-600 text-leaf-deep">Habits that follow us</h3>
+          <p class="mt-2 text-sm leading-relaxed text-ink/70">Low fruit and vegetable intake in adolescence rarely stays in childhood — it persists into adulthood, quietly raising long-term health risks.</p>
+        </article>
+        <article class="rounded-3xl border border-leaf/10 bg-honey p-6 shadow-soft">
+          <h3 class="font-display text-lg font-600 text-leaf-deep">A rural gap</h3>
+          <p class="mt-2 text-sm leading-relaxed text-ink/70">In rural Sri Lanka, structured nutrition education is limited. Awareness campaigns arrive in fits and starts — too inconsistent to change behaviour for good.</p>
+        </article>
+        <article class="rounded-3xl border border-leaf/10 bg-honey p-6 shadow-soft">
+          <h3 class="font-display text-lg font-600 text-leaf-deep">Knowing isn't doing</h3>
+          <p class="mt-2 text-sm leading-relaxed text-ink/70">Even where knowledge exists, social and environmental pressures keep it from crossing into daily practice. Theory alone isn't enough.</p>
+        </article>
+        <article class="rounded-3xl border border-leaf/10 bg-leaf p-6 text-cream shadow-soft">
+          <h3 class="font-display text-lg font-600">Schools change everything</h3>
+          <p class="mt-2 text-sm leading-relaxed text-cream/85">A school is a structured space where knowledge, attitudes and behaviour can be shaped together — repeatedly, with peers, woven into the day.</p>
+        </article>
+      </div>
+    </div>
+
+    <!-- research callout -->
+    <div class="reveal mt-14 overflow-hidden rounded-3xl border border-leaf/10 bg-leaf-deep text-cream shadow-plate">
+      <div class="grid gap-6 p-8 sm:grid-cols-[auto_1fr] sm:items-center sm:p-10">
+        <div class="grid h-14 w-14 place-items-center rounded-2xl bg-mango/20 text-mango-soft">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z"/></svg>
+        </div>
+        <p class="text-base leading-relaxed text-cream/90">
+          FuturePlate grew out of evidence, not a hunch. It was inspired by undergraduate research —
+          <span class="italic text-mango-soft">“Assessment of adolescent behaviour on fruit and vegetable consumption in a rural area of Anuradhapura, Sri Lanka”</span>
+          — which revealed significant gaps in how adolescents eat.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PROGRAM OVERVIEW + OBJECTIVES ================= -->
+<section id="program" class="relative overflow-hidden bg-honey py-20 sm:py-28">
+  <div class="absolute inset-0 field-dots opacity-60"></div>
+  <div class="relative mx-auto max-w-7xl px-5 sm:px-8">
+    <div class="reveal mx-auto max-w-2xl text-center">
+      <span class="eyebrow text-mango">The program</span>
+      <h2 class="mt-4 font-display text-3xl leading-tight tracking-tight text-leaf-deep sm:text-4xl">
+        A practical, student-centred initiative
+      </h2>
+      <p class="mt-5 leading-relaxed text-ink/75">
+        FuturePlate runs in selected government schools across the Anuradhapura District, focused on Grade 8 and 9 students and their teachers — because early adolescence is when lifelong habits are still soft enough to shape. It is backed by academic institutions, health professionals and educational authorities.
+      </p>
+    </div>
+
+    <!-- Objectives -->
+    <div class="reveal d1 mt-14">
+      <h3 class="text-center eyebrow text-leaf-deep/60">What we set out to achieve</h3>
+      <div class="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+        <div class="rounded-3xl bg-cream p-6 shadow-soft ring-1 ring-leaf/10">
+          <span class="grid h-11 w-11 place-items-center rounded-xl bg-leaf/10 text-leaf"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M20 6 9 17l-5-5"/></svg></span>
+          <h4 class="mt-4 font-display text-lg font-600 text-leaf-deep">Lifelong habits</h4>
+          <p class="mt-2 text-sm leading-relaxed text-ink/70">Instil healthy eating that endures, with positive attitudes toward nutritious food.</p>
+        </div>
+        <div class="rounded-3xl bg-cream p-6 shadow-soft ring-1 ring-leaf/10">
+          <span class="grid h-11 w-11 place-items-center rounded-xl bg-mango/15 text-mango"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 2a10 10 0 1 0 10 10"/><path d="M12 6v6l4 2"/></svg></span>
+          <h4 class="mt-4 font-display text-lg font-600 text-leaf-deep">More fruit & veg</h4>
+          <p class="mt-2 text-sm leading-relaxed text-ink/70">Encourage greater daily consumption of fruits and vegetables among students.</p>
+        </div>
+        <div class="rounded-3xl bg-cream p-6 shadow-soft ring-1 ring-leaf/10">
+          <span class="grid h-11 w-11 place-items-center rounded-xl bg-leaf/10 text-leaf"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M19 14c1.5-1.5 3-3.2 3-5.5A5.5 5.5 0 0 0 12 5 5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4 3 5.5l7 7Z"/></svg></span>
+          <h4 class="mt-4 font-display text-lg font-600 text-leaf-deep">Lower NCD risk</h4>
+          <p class="mt-2 text-sm leading-relaxed text-ink/70">Reduce long-term risk of non-communicable diseases through early education.</p>
+        </div>
+        <div class="rounded-3xl bg-cream p-6 shadow-soft ring-1 ring-leaf/10">
+          <span class="grid h-11 w-11 place-items-center rounded-xl bg-mango/15 text-mango"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13A4 4 0 0 1 16 11"/></svg></span>
+          <h4 class="mt-4 font-display text-lg font-600 text-leaf-deep">Teachers & parents</h4>
+          <p class="mt-2 text-sm leading-relaxed text-ink/70">Build teacher capacity and engage parents so habits are reinforced at home.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= HOW IT WORKS / APPROACH ================= -->
+<section id="approach" class="bg-cream py-20 sm:py-28">
+  <div class="mx-auto max-w-7xl px-5 sm:px-8">
+    <div class="reveal max-w-2xl">
+      <span class="eyebrow text-mango">How it works</span>
+      <h2 class="mt-4 font-display text-3xl leading-tight tracking-tight text-leaf-deep sm:text-4xl">
+        Three ways we reach a generation
+      </h2>
+      <p class="mt-5 leading-relaxed text-ink/75">
+        FuturePlate steps away from the lecture and toward participation — interactive, peer-led and connected to the home.
+      </p>
+    </div>
+
+    <div class="mt-12 space-y-5">
+      <!-- Pillar 1 -->
+      <article class="reveal group grid gap-6 rounded-3xl border border-leaf/10 bg-honey p-7 shadow-soft transition-shadow hover:shadow-plate sm:grid-cols-[auto_1fr] sm:p-9">
+        <div class="flex items-start gap-4">
+          <span class="font-display text-2xl font-600 text-mango">01</span>
+          <span class="grid h-12 w-12 place-items-center rounded-2xl bg-leaf text-cream"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg></span>
+        </div>
+        <div>
+          <h3 class="font-display text-xl font-600 text-leaf-deep">Learning that doesn't feel like a lesson</h3>
+          <p class="mt-2 max-w-3xl leading-relaxed text-ink/75">Workshops run on quizzes, games, storytelling and vivid visual aids. Sessions cover balanced diets, the importance of fruits and vegetables, hydration and healthy-lifestyle habits — so students retain what they learn and carry it home.</p>
+        </div>
+      </article>
+
+      <!-- Pillar 2 -->
+      <article class="reveal d1 group grid gap-6 rounded-3xl border border-leaf/10 bg-leaf-deep p-7 text-cream shadow-soft transition-shadow hover:shadow-plate sm:grid-cols-[auto_1fr] sm:p-9">
+        <div class="flex items-start gap-4">
+          <span class="font-display text-2xl font-600 text-mango-soft">02</span>
+          <span class="grid h-12 w-12 place-items-center rounded-2xl bg-mango text-leaf-deep"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="m12 2 2.4 7.4H22l-6 4.5 2.3 7.1L12 16.7 5.7 21l2.3-7.1-6-4.5h7.6z"/></svg></span>
+        </div>
+        <div>
+          <h3 class="font-display text-xl font-600">School Nutrition Ambassador Program</h3>
+          <p class="mt-2 max-w-3xl leading-relaxed text-cream/85">Selected students are trained as peer leaders. Ambassadors run nutrition-themed campaigns, healthy cooking sessions and poster competitions, give short talks at school assemblies, and fill knowledge boards with their own creative content. A message lands differently when it comes from a classmate.</p>
+        </div>
+      </article>
+
+      <!-- Pillar 3 -->
+      <article class="reveal d2 group grid gap-6 rounded-3xl border border-leaf/10 bg-honey p-7 shadow-soft transition-shadow hover:shadow-plate sm:grid-cols-[auto_1fr] sm:p-9">
+        <div class="flex items-start gap-4">
+          <span class="font-display text-2xl font-600 text-mango">03</span>
+          <span class="grid h-12 w-12 place-items-center rounded-2xl bg-leaf text-cream"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M3 9.5 12 3l9 6.5V21a1 1 0 0 1-1 1h-5v-7H9v7H4a1 1 0 0 1-1-1z"/></svg></span>
+        </div>
+        <div>
+          <h3 class="font-display text-xl font-600 text-leaf-deep">Community & parental engagement</h3>
+          <p class="mt-2 max-w-3xl leading-relaxed text-ink/75">Because the home environment carries real weight, FuturePlate offers parental awareness sessions on request — helping families understand balanced diets and support healthy eating under their own roof.</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ================= IMPACT / FIELD EXPERIENCE + GALLERY ================= -->
+<section id="impact" class="relative overflow-hidden bg-leaf-deep py-20 text-cream sm:py-28">
+  <div class="pointer-events-none absolute -top-32 right-0 h-80 w-80 rounded-full bg-mango/10 blur-3xl"></div>
+  <div class="relative mx-auto max-w-7xl px-5 sm:px-8">
+    <div class="reveal max-w-2xl">
+      <span class="eyebrow text-mango-soft">From the field</span>
+      <h2 class="mt-4 font-display text-3xl leading-tight tracking-tight sm:text-4xl">What we've seen so far</h2>
+      <p class="mt-5 leading-relaxed text-cream/80">
+        In its first phase, FuturePlate has run successfully in five schools across the Anuradhapura District — early days that have taught us a great deal.
+      </p>
+    </div>
+
+    <div class="reveal d1 mt-12 grid gap-5 sm:grid-cols-3">
+      <div class="rounded-3xl bg-cream/5 p-6 ring-1 ring-cream/10 backdrop-blur">
+        <p class="font-display text-2xl font-600 text-mango-soft">Enthusiastic</p>
+        <p class="mt-2 text-sm leading-relaxed text-cream/80">Students threw themselves into workshops, lighting up during quizzes, games and competitions.</p>
+      </div>
+      <div class="rounded-3xl bg-cream/5 p-6 ring-1 ring-cream/10 backdrop-blur">
+        <p class="font-display text-2xl font-600 text-mango-soft">Welcomed</p>
+        <p class="mt-2 text-sm leading-relaxed text-cream/80">Teachers appreciated the program and named a long-felt gap: no structured nutrition education in the curriculum.</p>
+      </div>
+      <div class="rounded-3xl bg-cream/5 p-6 ring-1 ring-cream/10 backdrop-blur">
+        <p class="font-display text-2xl font-600 text-mango-soft">Needed</p>
+        <p class="mt-2 text-sm leading-relaxed text-cream/80">Many students had limited prior knowledge of basic nutrition — confirming exactly why this work matters.</p>
+      </div>
+    </div>
+
+    <!-- Gallery placeholders -->
+    <div class="reveal d2 mt-10">
+      <p class="eyebrow text-cream/50">Moments from our schools</p>
+      <div class="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <!-- ===== IMAGE PLACEHOLDER: GALLERY (repeat/replace each) ===== -->
+        <!-- Replace each block's inner content with: <img src="images/gallery-1.jpg" alt="..." class="h-full w-full object-cover"> -->
+        <figure class="ph grid aspect-[4/3] place-items-center overflow-hidden rounded-3xl ring-1 ring-cream/15 text-center">
+          <div class="px-4 text-leaf-deep"><svg class="mx-auto mb-2 h-8 w-8 text-leaf/40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="11" r="2"/><path d="m21 17-5-5L5 21"/></svg><p class="text-xs font-700">Project photo 1</p></div>
+        </figure>
+        <figure class="ph grid aspect-[4/3] place-items-center overflow-hidden rounded-3xl ring-1 ring-cream/15 text-center">
+          <div class="px-4 text-leaf-deep"><svg class="mx-auto mb-2 h-8 w-8 text-leaf/40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="11" r="2"/><path d="m21 17-5-5L5 21"/></svg><p class="text-xs font-700">Project photo 2</p></div>
+        </figure>
+        <figure class="ph grid aspect-[4/3] place-items-center overflow-hidden rounded-3xl ring-1 ring-cream/15 text-center">
+          <div class="px-4 text-leaf-deep"><svg class="mx-auto mb-2 h-8 w-8 text-leaf/40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="11" r="2"/><path d="m21 17-5-5L5 21"/></svg><p class="text-xs font-700">Project photo 3</p></div>
+        </figure>
+      </div>
+    </div>
+
+    <!-- M&E + Challenges -->
+    <div class="reveal mt-12 grid gap-5 lg:grid-cols-2">
+      <div class="rounded-3xl border border-cream/15 p-7">
+        <h3 class="font-display text-xl font-600 text-mango-soft">Measuring what matters</h3>
+        <p class="mt-3 leading-relaxed text-cream/80">A structured framework tracks impact: baseline and endline assessments capture students' knowledge, attitudes and practices. Qualitative feedback from students and teachers, plus observation checklists and ambassador activity logs, round out the picture — and every finding feeds back into the program.</p>
+      </div>
+      <div class="rounded-3xl border border-cream/15 p-7">
+        <h3 class="font-display text-xl font-600 text-mango-soft">Honest challenges</h3>
+        <p class="mt-3 leading-relaxed text-cream/80">Crowded timetables, resource constraints and field logistics all create friction, and sustaining parental involvement remains the hardest part — because change at home decides whether anything lasts. The program has proven adaptable, refined lesson by lesson.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FUTURE VISION ================= -->
+<section class="bg-honey py-20 sm:py-24">
+  <div class="reveal mx-auto max-w-3xl px-5 text-center sm:px-8">
+    <span class="eyebrow text-mango">The road ahead</span>
+    <h2 class="mt-4 font-display text-3xl leading-tight tracking-tight text-leaf-deep sm:text-[2.6rem]">
+      A foundation, not a one-off
+    </h2>
+    <p class="mt-5 text-lg leading-relaxed text-ink/75">
+      FuturePlate was never meant to flare and fade. The path forward leads to more schools across the Anuradhapura District — and, in time, to other regions of Sri Lanka.
+    </p>
+    <div class="mt-8 inline-flex flex-wrap items-center justify-center gap-3">
+      <span class="rounded-full bg-cream px-5 py-2.5 text-sm font-700 text-leaf-deep ring-1 ring-leaf/15">More schools in Anuradhapura</span>
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#E68A38" stroke-width="2" class="hidden sm:block"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      <span class="rounded-full bg-leaf px-5 py-2.5 text-sm font-700 text-cream">Across Sri Lanka</span>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FOUNDER ================= -->
+<section id="founder" class="bg-cream py-20 sm:py-28">
+  <div class="mx-auto max-w-7xl px-5 sm:px-8">
+    <div class="grid items-center gap-12 lg:grid-cols-[0.9fr_1.1fr]">
+      <!-- Portrait plate -->
+      <div class="reveal relative mx-auto w-full max-w-sm">
+        <div class="plate-rim relative aspect-square w-full p-4 shadow-plate">
+          <!-- ===== IMAGE PLACEHOLDER: FOUNDER ===== -->
+          <!-- Replace the inner <div class="ph ..."> with: <img src="images/gayathri.jpg" alt="Gayathri Dissanayaka" class="h-full w-full rounded-full object-cover"> -->
+          <div class="ph grid h-full w-full place-items-center rounded-full text-center">
+            <div class="px-6">
+              <svg class="mx-auto mb-3 h-10 w-10 text-leaf/40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="8" r="4"/><path d="M4 21v-1a6 6 0 0 1 6-6h4a6 6 0 0 1 6 6v1"/></svg>
+              <p class="text-sm font-700 text-leaf-deep">Founder portrait</p>
+              <p class="mt-1 text-xs text-ink/50">Add Gayathri's photo here</p>
+            </div>
+          </div>
+        </div>
+        <div class="absolute -bottom-4 left-1/2 -translate-x-1/2 rounded-full bg-mango px-5 py-2 text-xs font-700 text-leaf-deep shadow-soft">Founder & lead dietitian</div>
+      </div>
+
+      <!-- Bio -->
+      <div class="reveal d1">
+        <span class="eyebrow text-mango">The founder</span>
+        <h2 class="mt-4 font-display text-3xl tracking-tight text-leaf-deep sm:text-4xl">Gayathri Dissanayaka</h2>
+        <p class="mt-1 text-base font-600 text-leaf">Registered Nutritionist &amp; Clinical Dietitian</p>
+
+        <p class="mt-6 leading-relaxed text-ink/75">
+          “Every clinical day reminds me that most of the chronic illness we treat in adulthood was written, in pencil, somewhere in childhood. I founded FuturePlate to reach children where they learn — and to carry them across the bridge from <span class="font-600 text-leaf">knowing</span> to <span class="font-600 text-leaf">doing</span>.”
+        </p>
+        <p class="mt-4 leading-relaxed text-ink/75">
+          As the project founder, Gayathri leads FuturePlate with a vision of a sustainable model that can grow across Sri Lanka — grounded in clinical expertise and built alongside teachers, families and health authorities.
+        </p>
+
+        <!-- contact quicklinks -->
+        <div class="mt-8 flex flex-wrap gap-3">
+          <a href="tel:0777659731" class="inline-flex items-center gap-2 rounded-full border border-leaf/20 bg-honey px-5 py-3 text-sm font-700 text-leaf-deep transition-colors hover:border-leaf hover:bg-leaf/5">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92Z"/></svg>
+            077 765 9731
+          </a>
+          <a href="mailto:gayathrithakshila1997@gmail.com" class="inline-flex items-center gap-2 rounded-full border border-leaf/20 bg-honey px-5 py-3 text-sm font-700 text-leaf-deep transition-colors hover:border-leaf hover:bg-leaf/5">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>
+            Email Gayathri
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CONTACT ================= -->
+<section id="contact" class="relative overflow-hidden bg-leaf py-20 text-cream sm:py-28">
+  <div class="absolute inset-0 field-dots opacity-30"></div>
+  <div class="relative mx-auto max-w-6xl px-5 sm:px-8">
+    <div class="grid gap-12 lg:grid-cols-2 lg:items-center">
+      <div class="reveal">
+        <span class="eyebrow text-mango-soft">Get in touch</span>
+        <h2 class="mt-4 font-display text-3xl leading-tight tracking-tight sm:text-4xl">
+          Bring FuturePlate to your school or community
+        </h2>
+        <p class="mt-5 leading-relaxed text-cream/80">
+          Whether you're an educator, a health professional, a parent or a potential partner, we'd love to hear from you. Reach out to start a conversation.
+        </p>
+
+        <div class="mt-8 space-y-3">
+          <a href="tel:0777659731" class="flex items-center gap-4 rounded-2xl bg-cream/5 p-4 ring-1 ring-cream/10 transition-colors hover:bg-cream/10">
+            <span class="grid h-11 w-11 place-items-center rounded-xl bg-mango text-leaf-deep"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92Z"/></svg></span>
+            <span><span class="block text-xs uppercase tracking-wider text-cream/60">Phone</span><span class="font-700">077 765 9731</span></span>
+          </a>
+          <a href="mailto:gayathrithakshila1997@gmail.com" class="flex items-center gap-4 rounded-2xl bg-cream/5 p-4 ring-1 ring-cream/10 transition-colors hover:bg-cream/10">
+            <span class="grid h-11 w-11 place-items-center rounded-xl bg-mango text-leaf-deep"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg></span>
+            <span><span class="block text-xs uppercase tracking-wider text-cream/60">Email</span><span class="break-all font-700">gayathrithakshila1997@gmail.com</span></span>
+          </a>
+          <div class="flex items-center gap-4 rounded-2xl bg-cream/5 p-4 ring-1 ring-cream/10">
+            <span class="grid h-11 w-11 place-items-center rounded-xl bg-mango text-leaf-deep"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0Z"/><circle cx="12" cy="10" r="3"/></svg></span>
+            <span><span class="block text-xs uppercase tracking-wider text-cream/60">Region</span><span class="font-700">Anuradhapura District, Sri Lanka</span></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Form (opens mail client) -->
+      <div class="reveal d1 rounded-3xl bg-cream p-7 text-ink shadow-plate sm:p-9">
+        <h3 class="font-display text-xl font-600 text-leaf-deep">Send a message</h3>
+        <p class="mt-1 text-sm text-ink/60">This opens your email app with the details filled in.</p>
+        <form id="contactForm" class="mt-5 space-y-4">
+          <div>
+            <label for="name" class="block text-xs font-700 uppercase tracking-wider text-ink/60">Name</label>
+            <input id="name" name="name" type="text" required class="mt-1.5 w-full rounded-xl border border-leaf/15 bg-honey px-4 py-3 text-sm outline-none transition focus:border-leaf focus:ring-2 focus:ring-leaf/20" placeholder="Your name" />
+          </div>
+          <div>
+            <label for="email" class="block text-xs font-700 uppercase tracking-wider text-ink/60">Your email</label>
+            <input id="email" name="email" type="email" required class="mt-1.5 w-full rounded-xl border border-leaf/15 bg-honey px-4 py-3 text-sm outline-none transition focus:border-leaf focus:ring-2 focus:ring-leaf/20" placeholder="you@example.com" />
+          </div>
+          <div>
+            <label for="message" class="block text-xs font-700 uppercase tracking-wider text-ink/60">Message</label>
+            <textarea id="message" name="message" rows="4" required class="mt-1.5 w-full resize-none rounded-xl border border-leaf/15 bg-honey px-4 py-3 text-sm outline-none transition focus:border-leaf focus:ring-2 focus:ring-leaf/20" placeholder="How can we help?"></textarea>
+          </div>
+          <button type="submit" class="w-full rounded-full bg-leaf px-6 py-3.5 text-sm font-700 text-cream transition-transform hover:-translate-y-0.5 hover:bg-leaf-deep">Open email to send</button>
+          <p id="formNote" class="hidden text-center text-xs font-600 text-leaf"></p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer class="bg-leaf-deep py-12 text-cream/70">
+  <div class="mx-auto max-w-7xl px-5 sm:px-8">
+    <div class="flex flex-col items-center justify-between gap-6 border-b border-cream/10 pb-8 sm:flex-row">
+      <a href="#top" class="flex items-center gap-2.5">
+        <span class="grid h-9 w-9 place-items-center rounded-full bg-cream/10 text-cream">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.6"/><path d="M12 15c0-2.2-1.6-3.8-3.8-3.8C8.2 13.4 9.8 15 12 15Zm0 0c0-2.6 1.8-4.4 4.4-4.4C16.4 13.2 14.6 15 12 15Zm0 0v2.6" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </span>
+        <span class="font-display text-xl font-600 text-cream">FuturePlate</span>
+      </a>
+      <nav class="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm font-600">
+        <a href="#about" class="hover:text-cream">The need</a>
+        <a href="#program" class="hover:text-cream">Program</a>
+        <a href="#approach" class="hover:text-cream">How it works</a>
+        <a href="#impact" class="hover:text-cream">Impact</a>
+        <a href="#founder" class="hover:text-cream">Founder</a>
+        <a href="#contact" class="hover:text-cream">Contact</a>
+      </nav>
+    </div>
+    <div class="mt-6 flex flex-col items-center justify-between gap-2 text-center text-xs sm:flex-row sm:text-left">
+      <p>© <span id="year"></span> FuturePlate · School-Based Nutrition Awareness, Sri Lanka.</p>
+      <p>Founded by Gayathri Dissanayaka, Registered Nutritionist &amp; Clinical Dietitian.</p>
+    </div>
+  </div>
+</footer>
+
+<!-- Back to top -->
+<button id="toTop" aria-label="Back to top" class="fixed bottom-6 right-6 z-40 hidden h-12 w-12 place-items-center rounded-full bg-leaf text-cream shadow-plate transition hover:-translate-y-1 hover:bg-leaf-deep">
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m18 15-6-6-6 6"/></svg>
+</button>
+
+<!-- ================= SCRIPTS ================= -->
+<script>
+  // Year
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // Mobile menu
+  const menuBtn = document.getElementById('menuBtn');
+  const mobileMenu = document.getElementById('mobileMenu');
+  const menuIcon = document.getElementById('menuIcon');
+  const openIco = '<path d="M4 7h16M4 12h16M4 17h16"/>';
+  const closeIco = '<path d="M6 6l12 12M18 6 6 18"/>';
+  function setMenu(open) {
+    mobileMenu.classList.toggle('hidden', !open);
+    menuBtn.setAttribute('aria-expanded', String(open));
+    menuIcon.innerHTML = open ? closeIco : openIco;
+  }
+  menuBtn.addEventListener('click', () => setMenu(mobileMenu.classList.contains('hidden')));
+  document.querySelectorAll('.m-link').forEach(a => a.addEventListener('click', () => setMenu(false)));
+
+  // Nav background on scroll + back-to-top visibility
+  const toTop = document.getElementById('toTop');
+  function onScroll() {
+    const y = window.scrollY;
+    toTop.classList.toggle('hidden', y < 500);
+    toTop.classList.toggle('grid', y >= 500);
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+  toTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+  // Scroll reveal
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // Active nav link via section observation
+  const navLinks = document.querySelectorAll('.nav-link');
+  const sections = ['about','program','approach','impact','founder','contact']
+    .map(id => document.getElementById(id)).filter(Boolean);
+  const spy = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        navLinks.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#' + e.target.id));
+      }
+    });
+  }, { threshold: 0.5 });
+  sections.forEach(s => spy.observe(s));
+
+  // Contact form -> mailto
+  const form = document.getElementById('contactForm');
+  const note = document.getElementById('formNote');
+  form.addEventListener('submit', (ev) => {
+    ev.preventDefault();
+    const name = encodeURIComponent(document.getElementById('name').value.trim());
+    const email = encodeURIComponent(document.getElementById('email').value.trim());
+    const msg = encodeURIComponent(document.getElementById('message').value.trim());
+    const subject = `FuturePlate enquiry from ${decodeURIComponent(name)}`;
+    const body = `Name: ${decodeURIComponent(name)}%0AEmail: ${decodeURIComponent(email)}%0A%0A${decodeURIComponent(msg)}`;
+    window.location.href = `mailto:gayathrithakshila1997@gmail.com?subject=${encodeURIComponent(subject)}&body=${body}`;
+    note.textContent = 'Opening your email app…';
+    note.classList.remove('hidden');
+  });
+</script>
+</body>
+</html>
