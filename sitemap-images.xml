@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+
+  <url>
+    <loc>https://futureplate.github.io/</loc>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dkj22lm1g/image/upload/v1773835410/Profile-Photo_itvxqs.webp</image:loc>
+      <image:title>Gayathri Dissanayaka — Founder of FuturePlate, School Nutrition Awareness Programme, Sri Lanka</image:title>
+      <image:caption>FuturePlate helps adolescents in Anuradhapura, Sri Lanka build lifelong healthy eating habits through education and peer leadership.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://futureplate.github.io/images/hero.jpg</image:loc>
+      <image:title>FuturePlate workshop with students at a government school in Anuradhapura</image:title>
+      <image:caption>Students participating in interactive nutrition education sessions at FuturePlate partner schools in Sri Lanka.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dkj22lm1g/image/upload/v1773835410/Profile-Photo_itvxqs.webp</image:loc>
+      <image:title>Gayathri Dissanayaka — Registered Nutritionist &amp; Clinical Dietitian, Founder of FuturePlate</image:title>
+      <image:caption>Gayathri Dissanayaka founded FuturePlate to bridge the gap between nutritional knowledge and daily eating habits among Sri Lankan adolescents.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://futureplate.github.io/images/gallery-1.jpg</image:loc>
+      <image:title>FuturePlate nutrition workshop session at a government school</image:title>
+      <image:caption>Interactive workshop covering balanced diets, fruit and vegetable consumption and healthy lifestyle habits.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://futureplate.github.io/images/gallery-2.jpg</image:loc>
+      <image:title>Student Nutrition Ambassadors leading a peer education campaign</image:title>
+      <image:caption>Selected students trained as Nutrition Ambassadors, running campaigns and assemblies at their schools in Anuradhapura.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://futureplate.github.io/images/gallery-3.jpg</image:loc>
+      <image:title>Healthy cooking session at a FuturePlate school event</image:title>
+      <image:caption>Hands-on healthy cooking session encouraging students to increase their daily fruit and vegetable intake.</image:caption>
+    </image:image>
+  </url>
+
+</urlset>
